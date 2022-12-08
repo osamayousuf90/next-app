@@ -1,19 +1,17 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Script from 'next/script'
 import About from './about'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+import Navbar from '../Components/Navbar/Navbar';
 
-export default function Home() {
-  const [view , setView] =  useState(false)
+export default function Index() {
+  const [view, setView] = useState(false)
+  const navigation = useRouter();
   return (
     <>
-      <div> 
-      Hello i am home
-        <button onClick={() => setView(!view)} >Show</button>
-      { view && <About pagal={"pagal"} /> }  
-      </div>   
+      <Navbar/>
+      <div className="homePage">
+      <h2>I am Home</h2>
+      </div>
     </>
   )
 }

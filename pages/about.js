@@ -1,9 +1,14 @@
-import React from 'react'
+import { useState } from 'react'
+import Navbar from '../Components/Navbar/Navbar'
 
-const About = (props) => {
-    const value = 5;
+const About = () => {
   return (
-    <div>Hello i am about { props.pagal }</div>
+    <>
+     <Navbar />
+      <div className="homePage">
+      <h2>I am About</h2>
+      </div> 
+    </>
   )
 }
 
