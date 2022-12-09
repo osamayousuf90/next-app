@@ -1,0 +1,30 @@
+.Card {
+    height: 200px;
+    padding: 20px 0px;
+    width: 250px;
+    background-color: black;
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+
+    &_inner {
+        padding: 30px 20px;
+        position: relative;
+        top: 30px;
+        // background-color: red;
+ 
+
+        h2 {
+            color: white;
+        }
+
+        span {
+            position: relative;
+            color: white;
+            top: 20px;
+        }
+    }
+}

@@ -5,7 +5,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const Navbar = () => {
-    const router = useRouter();
+  const router = useRouter();
+  
+  // handle logout 
+  const handleLogout = () => {
+    window.localStorage.clear()
+    router.push("/login")
+  }
   return (
     <div>
         <div className="navbar">
@@ -15,7 +21,7 @@ const Navbar = () => {
                 <p onClick={() => router.push("/")}>Home</p>
                 <p onClick={() => router.push("/contact")}>Contact</p>                    
                 <p onClick={() => router.push("/about")}>About</p>  
-                <span className='logout'>Logout</span>  
+                <span onClick={ () =>  handleLogout() } className='logout'>Logout</span>  
             </div>  
         </div>
     </div>
