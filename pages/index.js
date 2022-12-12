@@ -8,18 +8,22 @@ import { requireAuthentication } from '../requireAuthentication';
 import axios from 'axios';
 
 
-export default function Index() {
-  const [view, setView] = useState(false)
-  const [list , setList] = useState([])
+export async function getStaticProps() {
+
+  const res = await axios.get('https://jsonplaceholder.typicode.com/comments')
+  const posts = await res?.json()
+
+  return {
+    props: {
+      posts,
+    },
+  }
+}
+
+
+export default function Index({posts}) {
   const router = useRouter();
 
-  useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/comments").then((res) => {
-      setList(res?.data)
-    }).catch((err) => {
-     console.log("err ===>", err);
-   })
-  }, [])
   
   
   return (
@@ -29,7 +33,7 @@ export default function Index() {
       <h2>I am Home</h2>
       <h2>Getting Data from SSR</h2>
         <div className="homePage_cards">
-        {list.map((res) => {
+        {posts.map((res) => {
         return (
         <Cards res={res} />               
         )
