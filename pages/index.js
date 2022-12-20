@@ -1,29 +1,11 @@
-import About from './about'
-import { useState , useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Navbar from '../Components/Navbar/Navbar';
 import Cards from '../Components/Cards/Cards';
-import { getSession } from "next-auth/react"
-import { requireAuthentication } from '../requireAuthentication';
-import axios from 'axios';
 
 
-export async function getStaticProps() {
 
-  const res = await axios.get('https://jsonplaceholder.typicode.com/comments')
-  const posts = await res?.json()
-
-  return {
-    props: {
-      posts,
-    },
-  }
-}
-
-
-export default function Index({posts}) {
-  const router = useRouter();
-
+ const Index = ({data}) => {
+  const router = useRouter(); 
   
   
   return (
@@ -33,7 +15,7 @@ export default function Index({posts}) {
       <h2>I am Home</h2>
       <h2>Getting Data from SSR</h2>
         <div className="homePage_cards">
-        {posts.map((res) => {
+        { data?.length === 0 ? <h1>Loading</h1> : data?.map((res) => {
         return (
         <Cards res={res} />               
         )
@@ -43,5 +25,33 @@ export default function Index({posts}) {
     </>
   )
 
+}
+
+
+export default Index  
+
+
+export async function getServerSideProps() {
+      
+  // Fetching data
+
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await res.json();
+    // const isLogged = localStorage?.getItem('isLogged');
+
+    
+      // if (!isLogged) {
+      //   return {
+      //     redirect: {
+      //       destination: "/login",
+      //       permanent : false
+      //      },
+      //   }  
+      // }
+  
+  // Passing data to the Product Page using props
+  return {
+      props : {data}
+  }
 }
 

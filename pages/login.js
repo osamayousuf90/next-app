@@ -2,6 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 
 
+
 const Login = () => {
   const router = useRouter();
   
@@ -9,6 +10,7 @@ const Login = () => {
   const handleLogin = () => {
     router.push("/")
     localStorage.setItem("isLogged", true)
+    // window.location.reload(true) 
   }
 
   return (
