@@ -40,6 +40,16 @@
         border: 1px solid grey;
         }
 
+
+        .required {
+            border: 1px solid green;
+        }
+
+
+        .noRequired {   
+            border: 1px solid red;
+        }
+
         button {
             margin-top: 20px;
             padding: 10px 20px;
