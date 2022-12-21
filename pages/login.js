@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
+import withAuth from '../withAuth';
+
 
 const Login = () => {
   const router = useRouter();
@@ -46,4 +48,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withAuth(Login);

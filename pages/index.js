@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router'
 import Navbar from '../Components/Navbar/Navbar';
 import Cards from '../Components/Cards/Cards';
+import withAuth from '../withAuth';
 
 
 
  const Index = ({data}) => {
   const router = useRouter(); 
-  
   
   return (
     <>
@@ -28,30 +28,22 @@ import Cards from '../Components/Cards/Cards';
 }
 
 
-export default Index  
+export default withAuth(Index)  
 
 
 export async function getServerSideProps() {
+
       
   // Fetching data
-
     const res = await fetch('https://jsonplaceholder.typicode.com/posts');
     const data = await res.json();
-    // const isLogged = localStorage?.getItem('isLogged');
 
-    
-      // if (!isLogged) {
-      //   return {
-      //     redirect: {
-      //       destination: "/login",
-      //       permanent : false
-      //      },
-      //   }  
-      // }
   
   // Passing data to the Product Page using props
   return {
       props : {data}
   }
+
+  
 }
 

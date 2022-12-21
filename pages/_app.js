@@ -1,8 +1,10 @@
-import '../styles/app.scss'
-import { SessionProvide } from "next-auth/react"
+import "../styles/app.scss";
+import { useEffect , useState } from "react";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  
+  return (
+    <Component {...pageProps} />
+  )
 }
-
-export default MyApp
+export default MyApp;
