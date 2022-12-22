@@ -1,27 +1,15 @@
-import { Suspense, useEffect , useState } from "react";
-import Router from "next/router";
+import { NextResponse } from "next/server";
 
-function withAuth(WrappedComponent) {
+export default function middleware(req) {
+  let verify = localStorage.getItem("isLogged");
+  let url = req.url;
+  console.log("url", url);
 
-  
-    
-  return function WithAuth(props) {
-    useEffect(() => {
-      const authenticated = localStorage.getItem("isLogged");
+  if (!verify && url.includes("/dashboard")) {
+    return NextResponse.redirect("http://localhost:3000/login");
+  }
 
-      if (!authenticated) {
-        Router.push("/login");
-      } else {
-        Router.push("/");
-      }
-    }, []);
-
-    return (
-    <>
-    <WrappedComponent {...props} />               
-    </>
-    );
-  };
+  if (verify && url === "http://localhost:3000") {
+    return NextResponse.redirect("http://localhost:3000/login");
+  }
 }
-
-export default withAuth;

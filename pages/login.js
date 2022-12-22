@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import withAuth from '../withAuth';
 
 
 const Login = () => {
@@ -12,7 +11,6 @@ const Login = () => {
   const handleLogin = () => {
     router.push("/");
     localStorage.setItem("isLogged", true); 
-    // window.location.reload(true)
   };
 
   function handleChange(event) {
@@ -48,4 +46,4 @@ const Login = () => {
   );
 };
 
-export default withAuth(Login);
+export default Login;

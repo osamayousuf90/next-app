@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import Navbar from '../Components/Navbar/Navbar';
 import Cards from '../Components/Cards/Cards';
-import withAuth from '../withAuth';
 
 
 
@@ -28,7 +27,7 @@ import withAuth from '../withAuth';
 }
 
 
-export default withAuth(Index)  
+export default Index  
 
 
 export async function getServerSideProps() {
