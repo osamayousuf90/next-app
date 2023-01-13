@@ -9,8 +9,9 @@ const Login = () => {
 
   //  handle login
   const handleLogin = () => {
-    router.push("/");
     localStorage.setItem("isLogged", true); 
+    window?.location?.reload(true)
+    // router.push("/");
   };
 
   function handleChange(event) {

@@ -9,8 +9,9 @@ const Navbar = () => {
   
   // handle logout 
   const handleLogout = () => {
+    window?.location?.reload(true)
     window.localStorage.clear()
-    router.push("/login")
+    // router.push("/login")
   }
   return (
     <div>
